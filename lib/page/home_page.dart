@@ -708,39 +708,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
-          actions: [
-            PopupMenuButton<MenuItems>(
-              onSelected: (item) {
-                switch (item) {
-                  case MenuItems.PREVIOUS_SESSION:
-                    _connectToPreviousSession();
-                    break;
-                  case MenuItems.KILL_SESSION:
-                    _wcClient.killSession();
-                    break;
-                  case MenuItems.CLEAR_CACHE:
-                    _webViewController.clearCache();
-                    break;
-                }
-              },
-              itemBuilder: (_) {
-                return [
-                  const PopupMenuItem(
-                    value: MenuItems.PREVIOUS_SESSION,
-                    child: Text('Connect Previous Session'),
-                  ),
-                  const PopupMenuItem(
-                    value: MenuItems.KILL_SESSION,
-                    child: Text('Kill Session'),
-                  ),
-                  const PopupMenuItem(
-                    value: MenuItems.CLEAR_CACHE,
-                    child: Text('Clear Cache'),
-                  ),
-                ];
-              },
-            ),
-          ],
         ),
         body: Container(
           width: double.infinity,
