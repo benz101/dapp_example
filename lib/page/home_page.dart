@@ -13,7 +13,7 @@ import 'package:web3dart/crypto.dart';
 import 'package:web3dart/web3dart.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key, required this.title}) : super(key: key);
+  const HomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -24,11 +24,6 @@ class HomePage extends StatefulWidget {
 const maticRpcUri =
     'https://rpc-mainnet.maticvigil.com/v1/140d92ff81094f0f3d7babde06603390d7e581be';
 
-enum MenuItems {
-  PREVIOUS_SESSION,
-  KILL_SESSION,
-  CLEAR_CACHE,
-}
 
 class _HomePageState extends State<HomePage> {
   late WCClient _wcClient;
@@ -128,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                       _wcClient.rejectSession();
                       Navigator.pop(context);
                     },
-                    child: Text('REJECT'),
+                    child: const Text('REJECT'),
                   ),
                 ),
               ],
@@ -300,11 +295,6 @@ class _HomePageState extends State<HomePage> {
         debugPrint("isNotEmpty");
         contractFunction = maibiFunctions.first;
         debugPrint("function ${contractFunction.name}");
-        // contractFunction.parameters.forEach((element) {
-        //   debugPrint("params ${element.name} ${element.type.name}");
-        // });
-        // final params = dataBytes.sublist(4).toList();
-        // debugPrint("params $params ${params.length}");
       }
       if (gasPrice == BigInt.zero) {
         gasPrice = await _web3client.estimateGas();
